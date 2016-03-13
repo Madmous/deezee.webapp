@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="deezee.webapp" default="all">
+  
+  
+  <property file="deezee.webapp.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.tox/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.ear"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.swc"/>
+    <include name="*.ane"/>
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.7" value="${jdk.home.1.7}/bin"/>
+  <path id="jdk.classpath.1.7">
+    <fileset dir="${jdk.home.1.7}">
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/compilefontconfig.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/javazic.jar"/>
+      <include name="jre/lib/rhino.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/ext/java-atk-wrapper.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/icedtea-sound.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.7}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.7}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.7"/>
+  
+  
+  <!-- Global Libraries -->
+  
+  <path id="library.grails-2.5.0.classpath">
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-aether-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-async-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-bootstrap-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-core-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-databinding-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-docs-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-encoder-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-logging-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-async-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-codecs-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-controllers-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-converters-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-databinding-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-datasource-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-domain-class-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-filters-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-gsp-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-i18n-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-log4j-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-mimetypes-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-rest-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-services-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-servlets-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-testing-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-url-mappings-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-plugin-validation-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-project-api-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-resources-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-scripts-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-spring-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-test-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-validation-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-web-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-web-common-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-web-databinding-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-web-databinding-spring-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-web-fileupload-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-web-gsp-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-web-gsp-taglib-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-web-jsp-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-web-mvc-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-web-sitemesh-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-web-url-mappings-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-wrapper-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/dist/grails-wrapper-support-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/aopalliance/aopalliance/jars/aopalliance-1.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/asm/asm/jars/asm-3.3.1.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/bouncycastle/bcmail-jdk14/jars/bcmail-jdk14-138.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/bouncycastle/bcprov-jdk14/jars/bcprov-jdk14-138.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/cglib/cglib/jars/cglib-2.2.2.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/com.google.code.findbugs/jsr305/jars/jsr305-1.3.9.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/com.google.code.gson/gson/jars/gson-2.2.4.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/com.google.guava/guava/jars/guava-10.0.1.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/com.google.protobuf/protobuf-java/jars/protobuf-java-2.5.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/com.googlecode.concurrentlinkedhashmap/concurrentlinkedhashmap-lru/jars/concurrentlinkedhashmap-lru-1.4.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/com.googlecode.json-simple/json-simple/jars/json-simple-1.1.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/com.h2database/h2/jars/h2-1.3.176.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/com.lowagie/itext/jars/itext-2.0.8.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/commons-cli/commons-cli/jars/commons-cli-1.2.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/commons-codec/commons-codec/jars/commons-codec-1.6.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/commons-collections/commons-collections/jars/commons-collections-3.2.1.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/commons-fileupload/commons-fileupload/jars/commons-fileupload-1.3.1.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/commons-io/commons-io/jars/commons-io-2.2.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/commons-lang/commons-lang/jars/commons-lang-2.6.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/commons-validator/commons-validator/jars/commons-validator-1.4.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/hsqldb/hsqldb/jars/hsqldb-1.8.0.10.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/javax.annotation/jsr250-api/jars/jsr250-api-1.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/javax.enterprise/cdi-api/jars/cdi-api-1.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/javax.inject/javax.inject/jars/javax.inject-1.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/javax.servlet.jsp/jsp-api/jars/jsp-api-2.1.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/javax.servlet/javax.servlet-api/jars/javax.servlet-api-3.0.1.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/javax.servlet/jsp-api/jars/jsp-api-2.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/javax.transaction/jta/jars/jta-1.1.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/jline/jline/jars/jline-2.12.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/junit/junit/jars/junit-4.12.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/log4j/log4j/jars/log4j-1.2.17.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/net.java.dev.jna/jna/jars/jna-4.0.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/opensymphony/sitemesh/jars/sitemesh-2.4.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.apache.ant/ant-junit/jars/ant-junit-1.8.4.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.apache.ant/ant-launcher/jars/ant-launcher-1.8.4.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.apache.ant/ant-trax/jars/ant-trax-1.7.1.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.apache.ant/ant/jars/ant-1.8.4.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.apache.httpcomponents/httpclient/jars/httpclient-4.2.6.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.apache.httpcomponents/httpcore/jars/httpcore-4.2.5.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.apache.ivy/ivy/jars/ivy-2.3.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.apache.maven/maven-aether-provider/jars/maven-aether-provider-3.2.5.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.apache.maven/maven-model-builder/jars/maven-model-builder-3.2.5.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.apache.maven/maven-model/jars/maven-model-3.2.5.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.apache.maven/maven-repository-metadata/jars/maven-repository-metadata-3.2.5.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.apache.maven/maven-settings-builder/jars/maven-settings-builder-3.2.5.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.apache.maven/maven-settings/jars/maven-settings-3.2.5.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.apache.tomcat.embed/tomcat-embed-logging-log4j/jars/tomcat-embed-logging-log4j-7.0.50.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.apache.tomcat/tomcat-jdbc/jars/tomcat-jdbc-7.0.50.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.apache.tomcat/tomcat-juli/jars/tomcat-juli-7.0.50.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.aspectj/aspectjrt/jars/aspectjrt-1.8.5.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.aspectj/aspectjweaver/jars/aspectjweaver-1.8.5.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.bouncycastle/bcpg-jdk15/jars/bcpg-jdk15-1.45.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.bouncycastle/bcprov-jdk15/jars/bcprov-jdk15-1.45.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.codehaus.gant/gant_groovy1.8/jars/gant_groovy1.8-1.9.6.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.codehaus.gpars/gpars/jars/gpars-1.2.1.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.codehaus.groovy/groovy-all/jars/groovy-all-2.4.3.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.codehaus.jsr166-mirror/jsr166y/jars/jsr166y-1.7.0.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.codehaus.plexus/plexus-classworlds/jars/plexus-classworlds-2.4.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.codehaus.plexus/plexus-component-annotations/jars/plexus-component-annotations-1.5.5.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.codehaus.plexus/plexus-interpolation/jars/plexus-interpolation-1.21.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.codehaus.plexus/plexus-utils/jars/plexus-utils-3.0.20.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.eclipse.aether/aether-api/jars/aether-api-1.0.2.v20150114.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.eclipse.aether/aether-connector-basic/jars/aether-connector-basic-1.0.2.v20150114.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.eclipse.aether/aether-impl/jars/aether-impl-1.0.2.v20150114.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.eclipse.aether/aether-spi/jars/aether-spi-1.0.2.v20150114.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.eclipse.aether/aether-transport-file/jars/aether-transport-file-1.0.2.v20150114.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.eclipse.aether/aether-transport-http/jars/aether-transport-http-1.0.2.v20150114.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.eclipse.aether/aether-util/jars/aether-util-1.0.2.v20150114.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.eclipse.sisu/org.eclipse.sisu.inject/jars/org.eclipse.sisu.inject-0.0.0.M5.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.eclipse.sisu/org.eclipse.sisu.plexus/jars/org.eclipse.sisu.plexus-0.0.0.M5.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.fusesource.jansi/jansi/jars/jansi-1.11.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.grails/grails-datastore-core/jars/grails-datastore-core-3.1.4.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.grails/grails-datastore-gorm/jars/grails-datastore-gorm-3.1.4.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.grails/grails-datastore-simple/jars/grails-datastore-simple-3.1.4.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.grails/grails-gdoc-engine/jars/grails-gdoc-engine-1.0.1.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.hamcrest/hamcrest-core/jars/hamcrest-core-1.3.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.hibernate.javax.persistence/hibernate-jpa-2.1-api/jars/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.jsoup/jsoup/jars/jsoup-1.7.3.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.objenesis/objenesis/jars/objenesis-1.4.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.slf4j/jcl-over-slf4j/jars/jcl-over-slf4j-1.7.5.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.slf4j/jul-to-slf4j/jars/jul-to-slf4j-1.7.5.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.slf4j/slf4j-api/jars/slf4j-api-1.7.5.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.slf4j/slf4j-simple/jars/slf4j-simple-1.7.5.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.sonatype.plexus/plexus-cipher/jars/plexus-cipher-1.4.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.sonatype.plexus/plexus-sec-dispatcher/jars/plexus-sec-dispatcher-1.3.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.sonatype.sisu/sisu-guice/jars/sisu-guice-3.1.0-no_aop.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.spockframework/spock-core/jars/spock-core-1.0-groovy-2.4.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.springframework.uaa/org.springframework.uaa.client/jars/org.springframework.uaa.client-1.0.1.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.springframework/spring-aop/jars/spring-aop-4.1.5.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.springframework/spring-aspects/jars/spring-aspects-4.1.5.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.springframework/spring-beans/jars/spring-beans-4.1.5.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.springframework/spring-context-support/jars/spring-context-support-4.1.5.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.springframework/spring-context/jars/spring-context-4.1.5.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.springframework/spring-core/jars/spring-core-4.1.5.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.springframework/spring-expression/jars/spring-expression-4.1.5.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.springframework/spring-jdbc/jars/spring-jdbc-4.1.5.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.springframework/spring-test/jars/spring-test-4.1.5.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.springframework/spring-tx/jars/spring-tx-4.1.5.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.springframework/spring-web/jars/spring-web-4.1.5.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.springframework/spring-webmvc/jars/spring-webmvc-4.1.5.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.springframework/springloaded/jars/springloaded-1.2.3.RELEASE.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.xhtmlrenderer/core-renderer/jars/core-renderer-R8.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/org.yaml/snakeyaml/jars/snakeyaml-1.8.jar"/>
+    <pathelement location="/home/madmous/.sdkman/candidates/grails/2.5.0/lib/xalan/serializer/jars/serializer-2.7.2.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+    <property name="grooovyc.task.sdk" value="library.grails-2.5.0.classpath"/>
+    <taskdef name="groovyc" classname="org.codehaus.groovy.ant.Groovyc" classpathref="${grooovyc.task.sdk}"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/module_deezee.webapp-grailsplugins.xml"/>
+  
+  <import file="${basedir}/module_deezee.webapp.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.deezee.webapp-grailsplugins, clean.module.deezee.webapp" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.deezee.webapp-grailsplugins, compile.module.deezee.webapp" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>

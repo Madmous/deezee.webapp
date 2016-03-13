@@ -1,0 +1,9 @@
+/*
+*= require /plugins/morris-0.5.1/morris.min
+*/
+
+#donut-example{
+    height: 250px;
+    width: 250px;
+    margin: auto;
+}

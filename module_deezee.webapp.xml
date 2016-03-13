@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_deezee.webapp" default="compile.module.deezee.webapp">
+  <dirname property="module.deezee.webapp.basedir" file="${ant.file.module_deezee.webapp}"/>
+  
+  <property name="module.jdk.home.deezee.webapp" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.deezee.webapp" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.deezee.webapp" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.deezee.webapp" value="-encoding UTF-8 -source 1.7 ${compiler.args}"/>
+  
+  <property name="deezee.webapp.output.dir" value="${module.deezee.webapp.basedir}/out/production/deezee.webapp"/>
+  <property name="deezee.webapp.testoutput.dir" value="${module.deezee.webapp.basedir}/out/test/deezee.webapp"/>
+  
+  <path id="deezee.webapp.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="deezee.webapp.module.production.classpath">
+    <path refid="${module.jdk.classpath.deezee.webapp}"/>
+    <path refid="library.grails-2.5.0.classpath"/>
+    <fileset dir="${basedir}/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <pathelement location="${path.variable.maven_repository}/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+    <pathelement location="${path.variable.maven_repository}/args4j/args4j/2.0.26/args4j-2.0.26.jar"/>
+    <pathelement location="${path.variable.maven_repository}/cglib/cglib-nodep/2.2.2/cglib-nodep-2.2.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/bertramlabs/plugins/asset-pipeline-core/2.1.1/asset-pipeline-core-2.1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/classmate/1.0.0/classmate-1.0.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/guava/guava/18.0/guava-18.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/javascript/closure-compiler-externs/v20141023/closure-compiler-externs-v20141023.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/javascript/closure-compiler/v20141023/closure-compiler-v20141023.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/2.9.0/ehcache-2.9.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-core/7.0.55/tomcat-embed-core-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-el/7.0.55/tomcat-embed-el-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.55/tomcat-embed-jasper-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-logging-log4j/7.0.55/tomcat-embed-logging-log4j-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-websocket/7.0.55/tomcat-embed-websocket-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/tomcat-catalina-ant/7.0.55/tomcat-catalina-ant-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-hibernate-core/3.1.4.RELEASE/grails-datastore-gorm-hibernate-core-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-hibernate4/3.1.4.RELEASE/grails-datastore-gorm-hibernate4-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-plugin-support/3.1.4.RELEASE/grails-datastore-gorm-plugin-support-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-test-support/1.0.2-grails-2.4/grails-datastore-test-support-1.0.2-grails-2.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/common/hibernate-commons-annotations/4.0.4.Final/hibernate-commons-annotations-4.0.4.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-core/4.3.8.Final/hibernate-core-4.3.8.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-ehcache/4.3.8.Final/hibernate-ehcache-4.3.8.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-validator/5.1.3.Final/hibernate-validator-5.1.3.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/javassist/javassist/3.17.1-GA/javassist-3.17.1-GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/jandex/1.1.0.Final/jandex-1.1.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging-annotations/1.2.0.Beta1/jboss-logging-annotations-1.2.0.Beta1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/liquibase/liquibase-core/2.0.5/liquibase-core-2.0.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/mozilla/rhino/1.7R4/rhino-1.7R4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-core/3.2.3.RELEASE/spring-security-core-3.2.3.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-web/3.2.3.RELEASE/spring-security-web-3.2.3.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-orm/4.1.5.RELEASE/spring-orm-4.1.5.RELEASE.jar"/>
+    <pathelement location="${deezee.webapp-grailsplugins.output.dir}"/>
+    <pathelement location="${path.variable.maven_repository}/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+    <pathelement location="${path.variable.maven_repository}/args4j/args4j/2.0.26/args4j-2.0.26.jar"/>
+    <pathelement location="${path.variable.maven_repository}/cglib/cglib-nodep/2.2.2/cglib-nodep-2.2.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/bertramlabs/plugins/asset-pipeline-core/2.1.1/asset-pipeline-core-2.1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/classmate/1.0.0/classmate-1.0.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/guava/guava/18.0/guava-18.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/javascript/closure-compiler-externs/v20141023/closure-compiler-externs-v20141023.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/javascript/closure-compiler/v20141023/closure-compiler-v20141023.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/2.9.0/ehcache-2.9.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-core/7.0.55/tomcat-embed-core-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-el/7.0.55/tomcat-embed-el-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.55/tomcat-embed-jasper-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-logging-log4j/7.0.55/tomcat-embed-logging-log4j-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-websocket/7.0.55/tomcat-embed-websocket-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/tomcat-catalina-ant/7.0.55/tomcat-catalina-ant-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-hibernate-core/3.1.4.RELEASE/grails-datastore-gorm-hibernate-core-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-hibernate4/3.1.4.RELEASE/grails-datastore-gorm-hibernate4-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-plugin-support/3.1.4.RELEASE/grails-datastore-gorm-plugin-support-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-test-support/1.0.2-grails-2.4/grails-datastore-test-support-1.0.2-grails-2.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/common/hibernate-commons-annotations/4.0.4.Final/hibernate-commons-annotations-4.0.4.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-core/4.3.8.Final/hibernate-core-4.3.8.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-ehcache/4.3.8.Final/hibernate-ehcache-4.3.8.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-validator/5.1.3.Final/hibernate-validator-5.1.3.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/javassist/javassist/3.17.1-GA/javassist-3.17.1-GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/jandex/1.1.0.Final/jandex-1.1.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging-annotations/1.2.0.Beta1/jboss-logging-annotations-1.2.0.Beta1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/liquibase/liquibase-core/2.0.5/liquibase-core-2.0.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/mozilla/rhino/1.7R4/rhino-1.7R4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-core/3.2.3.RELEASE/spring-security-core-3.2.3.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-web/3.2.3.RELEASE/spring-security-web-3.2.3.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-orm/4.1.5.RELEASE/spring-orm-4.1.5.RELEASE.jar"/>
+  </path>
+  
+  <path id="deezee.webapp.runtime.production.module.classpath">
+    <pathelement location="${deezee.webapp.output.dir}"/>
+    <path refid="library.grails-2.5.0.classpath"/>
+    <fileset dir="${basedir}/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <pathelement location="${path.variable.maven_repository}/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+    <pathelement location="${path.variable.maven_repository}/args4j/args4j/2.0.26/args4j-2.0.26.jar"/>
+    <pathelement location="${path.variable.maven_repository}/cglib/cglib-nodep/2.2.2/cglib-nodep-2.2.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/bertramlabs/plugins/asset-pipeline-core/2.1.1/asset-pipeline-core-2.1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/classmate/1.0.0/classmate-1.0.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/guava/guava/18.0/guava-18.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/javascript/closure-compiler-externs/v20141023/closure-compiler-externs-v20141023.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/javascript/closure-compiler/v20141023/closure-compiler-v20141023.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/2.9.0/ehcache-2.9.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-core/7.0.55/tomcat-embed-core-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-el/7.0.55/tomcat-embed-el-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.55/tomcat-embed-jasper-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-logging-log4j/7.0.55/tomcat-embed-logging-log4j-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-websocket/7.0.55/tomcat-embed-websocket-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/tomcat-catalina-ant/7.0.55/tomcat-catalina-ant-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-hibernate-core/3.1.4.RELEASE/grails-datastore-gorm-hibernate-core-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-hibernate4/3.1.4.RELEASE/grails-datastore-gorm-hibernate4-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-plugin-support/3.1.4.RELEASE/grails-datastore-gorm-plugin-support-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-test-support/1.0.2-grails-2.4/grails-datastore-test-support-1.0.2-grails-2.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/common/hibernate-commons-annotations/4.0.4.Final/hibernate-commons-annotations-4.0.4.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-core/4.3.8.Final/hibernate-core-4.3.8.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-ehcache/4.3.8.Final/hibernate-ehcache-4.3.8.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-validator/5.1.3.Final/hibernate-validator-5.1.3.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/javassist/javassist/3.17.1-GA/javassist-3.17.1-GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/jandex/1.1.0.Final/jandex-1.1.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging-annotations/1.2.0.Beta1/jboss-logging-annotations-1.2.0.Beta1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/liquibase/liquibase-core/2.0.5/liquibase-core-2.0.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/mozilla/rhino/1.7R4/rhino-1.7R4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-core/3.2.3.RELEASE/spring-security-core-3.2.3.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-web/3.2.3.RELEASE/spring-security-web-3.2.3.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-orm/4.1.5.RELEASE/spring-orm-4.1.5.RELEASE.jar"/>
+    <path refid="deezee.webapp-grailsplugins.runtime.production.module.classpath"/>
+  </path>
+  
+  <path id="deezee.webapp.module.classpath">
+    <path refid="${module.jdk.classpath.deezee.webapp}"/>
+    <pathelement location="${deezee.webapp.output.dir}"/>
+    <path refid="library.grails-2.5.0.classpath"/>
+    <fileset dir="${basedir}/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <pathelement location="${path.variable.maven_repository}/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+    <pathelement location="${path.variable.maven_repository}/args4j/args4j/2.0.26/args4j-2.0.26.jar"/>
+    <pathelement location="${path.variable.maven_repository}/cglib/cglib-nodep/2.2.2/cglib-nodep-2.2.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/bertramlabs/plugins/asset-pipeline-core/2.1.1/asset-pipeline-core-2.1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/classmate/1.0.0/classmate-1.0.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/guava/guava/18.0/guava-18.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/javascript/closure-compiler-externs/v20141023/closure-compiler-externs-v20141023.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/javascript/closure-compiler/v20141023/closure-compiler-v20141023.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/2.9.0/ehcache-2.9.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-core/7.0.55/tomcat-embed-core-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-el/7.0.55/tomcat-embed-el-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.55/tomcat-embed-jasper-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-logging-log4j/7.0.55/tomcat-embed-logging-log4j-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-websocket/7.0.55/tomcat-embed-websocket-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/tomcat-catalina-ant/7.0.55/tomcat-catalina-ant-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-hibernate-core/3.1.4.RELEASE/grails-datastore-gorm-hibernate-core-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-hibernate4/3.1.4.RELEASE/grails-datastore-gorm-hibernate4-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-plugin-support/3.1.4.RELEASE/grails-datastore-gorm-plugin-support-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-test-support/1.0.2-grails-2.4/grails-datastore-test-support-1.0.2-grails-2.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/common/hibernate-commons-annotations/4.0.4.Final/hibernate-commons-annotations-4.0.4.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-core/4.3.8.Final/hibernate-core-4.3.8.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-ehcache/4.3.8.Final/hibernate-ehcache-4.3.8.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-validator/5.1.3.Final/hibernate-validator-5.1.3.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/javassist/javassist/3.17.1-GA/javassist-3.17.1-GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/jandex/1.1.0.Final/jandex-1.1.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging-annotations/1.2.0.Beta1/jboss-logging-annotations-1.2.0.Beta1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/liquibase/liquibase-core/2.0.5/liquibase-core-2.0.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/mozilla/rhino/1.7R4/rhino-1.7R4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-core/3.2.3.RELEASE/spring-security-core-3.2.3.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-web/3.2.3.RELEASE/spring-security-web-3.2.3.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-orm/4.1.5.RELEASE/spring-orm-4.1.5.RELEASE.jar"/>
+    <pathelement location="${deezee.webapp-grailsplugins.testoutput.dir}"/>
+    <pathelement location="${deezee.webapp-grailsplugins.output.dir}"/>
+    <pathelement location="${path.variable.maven_repository}/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+    <pathelement location="${path.variable.maven_repository}/args4j/args4j/2.0.26/args4j-2.0.26.jar"/>
+    <pathelement location="${path.variable.maven_repository}/cglib/cglib-nodep/2.2.2/cglib-nodep-2.2.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/bertramlabs/plugins/asset-pipeline-core/2.1.1/asset-pipeline-core-2.1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/classmate/1.0.0/classmate-1.0.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/guava/guava/18.0/guava-18.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/javascript/closure-compiler-externs/v20141023/closure-compiler-externs-v20141023.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/javascript/closure-compiler/v20141023/closure-compiler-v20141023.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/2.9.0/ehcache-2.9.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-core/7.0.55/tomcat-embed-core-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-el/7.0.55/tomcat-embed-el-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.55/tomcat-embed-jasper-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-logging-log4j/7.0.55/tomcat-embed-logging-log4j-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-websocket/7.0.55/tomcat-embed-websocket-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/tomcat-catalina-ant/7.0.55/tomcat-catalina-ant-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-hibernate-core/3.1.4.RELEASE/grails-datastore-gorm-hibernate-core-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-hibernate4/3.1.4.RELEASE/grails-datastore-gorm-hibernate4-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-plugin-support/3.1.4.RELEASE/grails-datastore-gorm-plugin-support-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-test-support/1.0.2-grails-2.4/grails-datastore-test-support-1.0.2-grails-2.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/common/hibernate-commons-annotations/4.0.4.Final/hibernate-commons-annotations-4.0.4.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-core/4.3.8.Final/hibernate-core-4.3.8.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-ehcache/4.3.8.Final/hibernate-ehcache-4.3.8.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-validator/5.1.3.Final/hibernate-validator-5.1.3.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/javassist/javassist/3.17.1-GA/javassist-3.17.1-GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/jandex/1.1.0.Final/jandex-1.1.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging-annotations/1.2.0.Beta1/jboss-logging-annotations-1.2.0.Beta1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/liquibase/liquibase-core/2.0.5/liquibase-core-2.0.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/mozilla/rhino/1.7R4/rhino-1.7R4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-core/3.2.3.RELEASE/spring-security-core-3.2.3.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-web/3.2.3.RELEASE/spring-security-web-3.2.3.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-orm/4.1.5.RELEASE/spring-orm-4.1.5.RELEASE.jar"/>
+  </path>
+  
+  <path id="deezee.webapp.runtime.module.classpath">
+    <pathelement location="${deezee.webapp.testoutput.dir}"/>
+    <pathelement location="${deezee.webapp.output.dir}"/>
+    <path refid="library.grails-2.5.0.classpath"/>
+    <fileset dir="${basedir}/lib">
+      <patternset refid="library.patterns"/>
+    </fileset>
+    <pathelement location="${path.variable.maven_repository}/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+    <pathelement location="${path.variable.maven_repository}/args4j/args4j/2.0.26/args4j-2.0.26.jar"/>
+    <pathelement location="${path.variable.maven_repository}/cglib/cglib-nodep/2.2.2/cglib-nodep-2.2.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/bertramlabs/plugins/asset-pipeline-core/2.1.1/asset-pipeline-core-2.1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/classmate/1.0.0/classmate-1.0.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/guava/guava/18.0/guava-18.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/javascript/closure-compiler-externs/v20141023/closure-compiler-externs-v20141023.jar"/>
+    <pathelement location="${path.variable.maven_repository}/com/google/javascript/closure-compiler/v20141023/closure-compiler-v20141023.jar"/>
+    <pathelement location="${path.variable.maven_repository}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar"/>
+    <pathelement location="${path.variable.maven_repository}/net/sf/ehcache/ehcache/2.9.0/ehcache-2.9.0.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-core/7.0.55/tomcat-embed-core-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-el/7.0.55/tomcat-embed-el-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.55/tomcat-embed-jasper-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-logging-log4j/7.0.55/tomcat-embed-logging-log4j-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-websocket/7.0.55/tomcat-embed-websocket-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/tomcat-catalina-ant/7.0.55/tomcat-catalina-ant-7.0.55.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-hibernate-core/3.1.4.RELEASE/grails-datastore-gorm-hibernate-core-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-hibernate4/3.1.4.RELEASE/grails-datastore-gorm-hibernate4-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-gorm-plugin-support/3.1.4.RELEASE/grails-datastore-gorm-plugin-support-3.1.4.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/grails/grails-datastore-test-support/1.0.2-grails-2.4/grails-datastore-test-support-1.0.2-grails-2.4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/common/hibernate-commons-annotations/4.0.4.Final/hibernate-commons-annotations-4.0.4.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-core/4.3.8.Final/hibernate-core-4.3.8.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-ehcache/4.3.8.Final/hibernate-ehcache-4.3.8.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-validator/5.1.3.Final/hibernate-validator-5.1.3.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/javassist/javassist/3.17.1-GA/javassist-3.17.1-GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/jandex/1.1.0.Final/jandex-1.1.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging-annotations/1.2.0.Beta1/jboss-logging-annotations-1.2.0.Beta1.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/liquibase/liquibase-core/2.0.5/liquibase-core-2.0.5.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/mozilla/rhino/1.7R4/rhino-1.7R4.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-core/3.2.3.RELEASE/spring-security-core-3.2.3.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-web/3.2.3.RELEASE/spring-security-web-3.2.3.RELEASE.jar"/>
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-orm/4.1.5.RELEASE/spring-orm-4.1.5.RELEASE.jar"/>
+    <path refid="deezee.webapp-grailsplugins.runtime.module.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.deezee.webapp">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.deezee.webapp">
+    <patternset refid="excluded.from.module.deezee.webapp"/>
+  </patternset>
+  
+  <path id="deezee.webapp.module.sourcepath">
+    <dirset dir="${module.deezee.webapp.basedir}">
+      <include name="grails-app/i18n"/>
+      <include name="grails-app/controllers"/>
+      <include name="grails-app/domain"/>
+      <include name="grails-app/utils"/>
+      <include name="grails-app/services"/>
+      <include name="grails-app/taglib"/>
+      <include name="src/java"/>
+      <include name="src/groovy"/>
+    </dirset>
+  </path>
+  
+  <path id="deezee.webapp.module.test.sourcepath">
+    <dirset dir="${module.deezee.webapp.basedir}">
+      <include name="test/unit"/>
+      <include name="test/integration"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.deezee.webapp" depends="compile.module.deezee.webapp.production,compile.module.deezee.webapp.tests" description="Compile module deezee.webapp"/>
+  
+  <target name="compile.module.deezee.webapp.production" depends="register.custom.compilers,compile.module.deezee.webapp-grailsplugins" description="Compile module deezee.webapp; production classes">
+    <mkdir dir="${deezee.webapp.output.dir}"/>
+    <groovyc destdir="${deezee.webapp.output.dir}" fork="yes">
+      <src refid="deezee.webapp.module.sourcepath"/>
+      <classpath refid="deezee.webapp.module.production.classpath"/>
+      <patternset refid="excluded.from.compilation.deezee.webapp"/>
+      <javac debug="${compiler.debug}">
+        <compilerarg line="${compiler.args.deezee.webapp}"/>
+      </javac>
+    </groovyc>
+    <instrumentIdeaExtensions destdir="${deezee.webapp.output.dir}">
+      <compilerarg line="${compiler.args.deezee.webapp}"/>
+      <bootclasspath refid="deezee.webapp.module.bootclasspath"/>
+      <classpath refid="deezee.webapp.module.production.classpath"/>
+      <src refid="deezee.webapp.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.deezee.webapp"/>
+    </instrumentIdeaExtensions>
+    
+    <copy todir="${deezee.webapp.output.dir}">
+      <fileset dir="${module.deezee.webapp.basedir}/grails-app/i18n">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.deezee.webapp.basedir}/grails-app/controllers">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.deezee.webapp.basedir}/grails-app/domain">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.deezee.webapp.basedir}/grails-app/utils">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.deezee.webapp.basedir}/grails-app/services">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.deezee.webapp.basedir}/grails-app/taglib">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.deezee.webapp.basedir}/src/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.deezee.webapp.basedir}/src/groovy">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.deezee.webapp.tests" depends="register.custom.compilers,compile.module.deezee.webapp.production" description="compile module deezee.webapp; test classes" unless="skip.tests">
+    <mkdir dir="${deezee.webapp.testoutput.dir}"/>
+    <groovyc destdir="${deezee.webapp.testoutput.dir}" fork="yes">
+      <src refid="deezee.webapp.module.test.sourcepath"/>
+      <classpath refid="deezee.webapp.module.classpath"/>
+      <patternset refid="excluded.from.compilation.deezee.webapp"/>
+      <javac debug="${compiler.debug}">
+        <compilerarg line="${compiler.args.deezee.webapp}"/>
+      </javac>
+    </groovyc>
+    <instrumentIdeaExtensions destdir="${deezee.webapp.testoutput.dir}">
+      <compilerarg line="${compiler.args.deezee.webapp}"/>
+      <bootclasspath refid="deezee.webapp.module.bootclasspath"/>
+      <classpath refid="deezee.webapp.module.classpath"/>
+      <src refid="deezee.webapp.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.deezee.webapp"/>
+    </instrumentIdeaExtensions>
+    
+    <copy todir="${deezee.webapp.testoutput.dir}">
+      <fileset dir="${module.deezee.webapp.basedir}/test/unit">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.deezee.webapp.basedir}/test/integration">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.deezee.webapp" description="cleanup module">
+    <delete dir="${deezee.webapp.output.dir}"/>
+    <delete dir="${deezee.webapp.testoutput.dir}"/>
+  </target>
+</project>
